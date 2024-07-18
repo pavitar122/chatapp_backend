@@ -18,7 +18,7 @@ dotenv.config();
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
-    origin: "http://localhost:3000",
+    origin: process.env.URL,
     methods: ["GET", "POST"]
 }));
 app.use(express.urlencoded({ extended: true }));
@@ -26,7 +26,7 @@ app.use(express.urlencoded({ extended: true }));
 const server = http.createServer(app);
 export const io = new Server(server, {
     cors: {
-        origin: ["http://localhost:3000"],
+        origin: [process.env.URL],
         methods: ["GET", "POST"]
     }
 });
